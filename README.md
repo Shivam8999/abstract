@@ -67,14 +67,11 @@ You can find these values in your Supabase dashboard under **Settings → API**.
    ```
 5. In Google Cloud Console, add the same redirect URL to your OAuth 2.0 credentials under **Authorized redirect URIs**
 
-### 5. Run the Database Migration
-
-Open the **Supabase SQL Editor** (Dashboard → SQL Editor) and run the contents of [`supabase/migration.sql`](supabase/migration.sql). This creates:
-
-- The `bookmarks` table
-- Row Level Security (RLS) policies (users can only access their own bookmarks)
-- An index on `user_id` for performance
-- Realtime publication for the `bookmarks` table
+### 5. Create Database Tables and Policies and OAUTH Client
+- Google OAUTH Client
+- Database Tables
+- Database Policies
+- Realtime Publication
 
 ### 6. Enable Realtime Replica Identity
 
@@ -133,6 +130,11 @@ supabase/
 
 **Resolution:** I changed the **Replica Identity** of the `bookmarks` table to **Full** via the Supabase Dashboard (Database → Tables → bookmarks → Replica Identity → Full). With full replica identity, all column values are included in the `old` record for `DELETE` events, allowing the Realtime filter to correctly match and deliver the event to the subscribed client.
 
+``` 
+alter table public.bookmarks
+replica identity full;
+
+ ```
 ---
 
 ## License

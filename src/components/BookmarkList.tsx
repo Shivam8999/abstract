@@ -81,7 +81,7 @@ export default function BookmarkList({
 
     const fetchInitialData = async () => {
         try {
-            const { data, error } = await supabase.from("bookmarks").select("*").order("created_at", { ascending: false })
+            const { data } = await supabase.from("bookmarks").select("*").order("created_at", { ascending: false })
             if (data) {
                 setBookmarks(data as Bookmark[])
             }
@@ -91,8 +91,7 @@ export default function BookmarkList({
     }
     useEffect(() => {
         fetchInitialData()
-
-    }, []);
+    }, [fetchInitialData]);
 
     const handleSignOut = async () => {
         await supabase.auth.signOut();
