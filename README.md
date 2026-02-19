@@ -4,7 +4,7 @@ A personal bookmark manager built with **Next.js 14** (App Router), **Supabase**
 
 ## 🌐 Deployment
 
-**Live URL:** `<YOUR_DEPLOYMENT_URL>`
+**Live URL:** `https://abstract-tech.vercel.app`
 
 ---
 
@@ -35,7 +35,7 @@ A personal bookmark manager built with **Next.js 14** (App Router), **Supabase**
 ### 1. Clone the Repository
 
 ```bash
-git clone <REPO_URL>
+git clone https://github.com/Shivam8999/abstract.git
 cd abstract
 ```
 
@@ -47,7 +47,7 @@ npm install
 
 ### 3. Configure Environment Variables
 
-Create a `.env.local` file in the project root:
+Create a `.env` file in the project root:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=<your-supabase-project-url>
@@ -65,6 +65,8 @@ You can find these values in your Supabase dashboard under **Settings → API**.
    ```
    https://<your-project-ref>.supabase.co/auth/v1/callback
    ```
+   Replace `<your-project-ref>` with your Supabase project reference.
+   Mine is `https://bpjleexsctpbykjhjjgk.supabase.co/auth/v1/callback` 
 5. In Google Cloud Console, add the same redirect URL to your OAuth 2.0 credentials under **Authorized redirect URIs**
 
 ### 5. Create Database Tables and Policies and OAUTH Client
@@ -104,8 +106,7 @@ src/
 │       ├── client.ts            # Browser Supabase client
 │       └── server.ts            # Server Supabase client
 ├── middleware.ts                # Auth guard + token refresh
-supabase/
-└── migration.sql                # Database schema + RLS policies
+
 ```
 
 ---
